@@ -237,12 +237,30 @@ import useDisconnectionWorkflow from "./ws/useDisconnectionWorkflow";
 import useDisConnectionDetails from "./ws/useDisConnectionDetails";
 import useWSModifyDetailsPage from "./ws/useWSModifyDetailsPage";
 
-import useWmsMDMS from "./wms/useWmsMDMS";
+import useWmsSchMDMS from "./wms/useWmsSchMDMS";
+import useWmsSchSearch from "./wms/sch/useWmsSchSearch";
+import useWmsSchCount from "./wms/sch/useWmsSchCount";
+import useWmsSchCreate from "./wms/sch/useWmsSchCreate";
+import useWmsSchUpdate from "./wms/sch/useWmsSchUpdate";
+
+import useWmsSorMDMS from "./wms/useWmsSorMDMS";
 import useWmsGenderMDMS from "./wms/useWmsGender";
 import useWmsSorSearch from "./wms/sor/useWmsSorSearch";
 import useWmsSorCount from "./wms/sor/useWmsSorCount";
 import useWmsSorCreate from "./wms/sor/useWmsSorCreate";
 import useWmsSorUpdate from "./wms/sor/useWmsSorUpdate";
+
+import useWmsPrjSearch from "./wms/prj/useWmsPrjSearch";
+import useWmsPrjCount from "./wms/prj/useWmsPrjCount";
+import useWmsPrjCreate from "./wms/prj/useWmsPrjCreate";
+import useWmsPrjUpdate from "./wms/prj/useWmsPrjUpdate";
+import useWmsMDMS from "./wms/useWmsMDMS";
+
+import useWmsPmSearch from "./wms/pm/useWmsPmSearch";
+import useWmsPmCount from "./wms/pm/useWmsPmCount";
+import useWmsPmCreate from "./wms/pm/useWmsPmCreate";
+import useWmsPmUpdate from "./wms/pm/useWmsPmUpdate";
+
 
 import useGetHowItWorksJSON from "./useHowItWorksJSON";
 import useGetFAQsJSON from "./useGetFAQsJSON";
@@ -497,8 +515,28 @@ const wms = {
     useWmsSorUpdate:useWmsSorUpdate,
     useWmsSorCount:useWmsSorCount
   },
-  useWmsMDMS,
+  sch:{
+    useWmsSchSearch:useWmsSchSearch,
+    useWmsSchCreate:useWmsSchCreate,
+    useWmsSchUpdate:useWmsSchUpdate,
+    useWmsSchCount:useWmsSchCount
+  },
+  prj:{
+    useWmsPrjSearch:useWmsPrjSearch,
+    useWmsPrjCreate:useWmsPrjCreate,
+    useWmsPrjUpdate:useWmsPrjUpdate,
+    useWmsPrjCount:useWmsPrjCount
+  },
+  useWmsSorMDMS,
+  pm:{
+    useWmsPmSearch:useWmsPmSearch,
+    useWmsPmCreate:useWmsPmCreate,
+    useWmsPmUpdate:useWmsPmUpdate,
+    useWmsPmCount:useWmsPmCount
+  },
+  useWmsSchMDMS,
   useWmsGenderMDMS,
+  useWmsMDMS
 };
 const reports = {
   useReportMeta,
