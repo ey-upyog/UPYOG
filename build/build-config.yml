@@ -90,6 +90,15 @@ config:
       - work-dir: "core-services/egov-accesscontrol"
         image-name: "egov-accesscontrol"
         dockerfile: "build/maven/Dockerfile"
+
+  - name: "builds/business-services/work-management-system"
+    build:
+      - work-dir: "work-management-system"
+        image-name: "work-management-system"
+        dockerfile: "build/maven/Dockerfile"
+      - work-dir: "work-management-system/src/main/resources/db"
+        image-name: "work-management-system-db"
+        
 # Core Services
   - name: "builds/upyog/core-services/audit-service"
     build:
