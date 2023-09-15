@@ -21,10 +21,10 @@ config:
   - name: "builds/business-services/work-management-system"
     build:
       - work-dir: "work-management-system"
-        image-name: "wms-service"
+        image-name: "work-management-system"
         dockerfile: "build/maven/Dockerfile"
       - work-dir: "work-management-system/src/main/resources/db"
-        image-name: "wms-service-db"
+        image-name: "work-management-system-db"
 
   - name: "builds/business-services/billing-service"
     build:
