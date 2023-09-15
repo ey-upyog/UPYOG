@@ -85,7 +85,7 @@ config:
         image-name: "dashboard-ingest"
         dockerfile: "build/maven/Dockerfile" 
         
-  - name: "builds/business-services/wms-services"
+  - name: "builds/business-services/work-management-system"
     build:
       - work-dir: "wms-services"
         image-name: "wms-services"
