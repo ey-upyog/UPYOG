@@ -85,7 +85,7 @@ config:
       - work-dir: "business-services/dashboard-ingest"
         image-name: "dashboard-ingest"
         dockerfile: "build/maven/Dockerfile"
-  - name: "builds/business-services/work-management-system"
+  - name: "builds/upyog/business-services/work-management-system"
     build:
       - work-dir: "work-management-system"
         image-name: "work-management-system"
