@@ -4,7 +4,7 @@ import {
   initPGRComponents,
   PGRReducers,
 } from "@egovernments/digit-ui-module-pgr";
-import { initFSMComponents } from "@egovernments/digit-ui-module-fsm";
+//import { initFSMComponents } from "@egovernments/digit-ui-module-fsm";
 import {
   PTModule,
   PTLinks,
@@ -42,7 +42,7 @@ initLibraries();
 
 const enabledModules = [
   "PGR",
-  "FSM",
+//  "FSM",
   "Payment",
   "PT",
   "QuickPayLinks",
@@ -81,7 +81,7 @@ window.Digit.ComponentRegistryService.setupRegistry({
 });
 
 initPGRComponents();
-initFSMComponents();
+//initFSMComponents();
 initDSSComponents();
 initMCollectComponents();
 initHRMSComponents();
@@ -101,9 +101,7 @@ const moduleReducers = (initData) => ({
 });
 
 function App() {
-  const stateCode =
-    window.globalConfigs?.getConfig("STATE_LEVEL_TENANT_ID") ||
-    process.env.REACT_APP_STATE_LEVEL_TENANT_ID;
+  const stateCode ="pg";
   if (!stateCode) {
     return <h1>stateCode is not defined</h1>;
   }
