@@ -1,6 +1,6 @@
 const { createProxyMiddleware } = require("http-proxy-middleware");
 const createProxy = createProxyMiddleware({
-  target: "https://test.wontract.com",
+  target: "https://upyog-sandbox.niua.org",
   changeOrigin: true,
 });
 module.exports = function (app) {
