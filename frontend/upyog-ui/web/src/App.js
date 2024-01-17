@@ -10,7 +10,7 @@ import {
   PTLinks,
   PTComponents,
 } from "@egovernments/digit-ui-module-pt";
-//import { MCollectModule, MCollectLinks, initMCollectComponents } from "@egovernments/digit-ui-module-mcollect";
+import { MCollectModule, MCollectLinks, initMCollectComponents } from "@egovernments/digit-ui-module-mcollect";
 import { initDSSComponents } from "@egovernments/digit-ui-module-dss";
 import {
   PaymentModule,
