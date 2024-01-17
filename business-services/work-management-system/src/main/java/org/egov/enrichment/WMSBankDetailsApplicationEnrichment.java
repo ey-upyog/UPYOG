@@ -81,6 +81,8 @@ public class WMSBankDetailsApplicationEnrichment {
 			existingApplication.get(0).setBankName(application.getBankName());
 			existingApplication.get(0).setBankBranch(application.getBankBranch());
 			existingApplication.get(0).setBankIfscCode(application.getBankIfscCode());
+			existingApplication.get(0).setBankBranchIfscCode(application.getBankBranchIfscCode());
+			existingApplication.get(0).setStatus(application.getStatus());
 			
 			
 //			application.setEndDate(date);

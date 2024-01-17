@@ -32,6 +32,12 @@ public class WMSBankDetailsApplication {
 	@JsonProperty("bank_ifsc_code")
 	 private String bankIfscCode = null;
 	
+	@JsonProperty("bank_branch_ifsc_code")
+	 private String bankBranchIfscCode = null;
+	
+	@JsonProperty("status")
+	 private String status = null;
+	
 	
 	 
 	 @JsonProperty("tenantId")

@@ -1,6 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useGlobalFilter, usePagination, useRowSelect, useSortBy, useTable } from "react-table";
 import { ArrowBack, ArrowForward, ArrowToFirst, ArrowToLast, SortDown, SortUp } from "./svgindex";
+import CheckBox from "./CheckBox";
 
 const noop = () => {};
 
@@ -34,6 +35,7 @@ const Table = ({
   tableRef,
   isReportTable=false,
   inboxStyles,
+  showCheckbox=false,
 }) => {
   const {
     getTableProps,
@@ -51,7 +53,12 @@ const Table = ({
     previousPage,
     setPageSize,
     setGlobalFilter,
-    state: { pageIndex, pageSize, sortBy, globalFilter },
+    
+    // selectedFlatRows,
+    state: { pageIndex, pageSize, sortBy, globalFilter,selectedRowIds },
+    toggleAllRowsSelected,
+    toggleRowSelected,
+    
   } = useTable(
     {
       columns,
@@ -79,7 +86,6 @@ const Table = ({
     usePagination,
     useRowSelect
   );
-
   useEffect(() => {
     onSort(sortBy);
   }, [onSort, sortBy]);
@@ -87,20 +93,47 @@ const Table = ({
   useEffect(() => setGlobalFilter(onSearch), [onSearch, setGlobalFilter]);
 
   const tref = useRef();
+ 
   
+  const handleSelectAll = () => {
+    // Toggle the selection for all rows manually
+    const areAllRowsSelected = rows.every((row) => selectedRowIds[row.id]);
+    rows.forEach((row) => {
+      toggleRowSelected(row.id, !areAllRowsSelected);
+    });
+  };
+
+  const handleSelectRow = (id) => {
+    // Toggle the selection for an individual row
+    toggleRowSelected(id);
+  };
+  
+  const isSomeRowsSelected = rows.some((row) => selectedRowIds[row.id]);
+  const isAllRowsSelected = rows.every((row) => selectedRowIds[row.id]);
+
   return (
     <React.Fragment>
     <div ref={tref} style={tref.current && tref.current.offsetWidth < tref.current.scrollWidth ? {...inboxStyles}: {}}>
     <span className={customTableWrapperClassName}>
+    <div style={{"justify-content": "space-between","overflow-x":"auto"}}>
     {tableTopComponent ? tableTopComponent:null}
-      <table className={className} {...getTableProps()} style={styles} ref={tableRef}>
-         
+      <table className={className} {...getTableProps()} style={styles} ref={tableRef}>  
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
              {showAutoSerialNo&& <th style={{  verticalAlign: "top"}}>
               {showAutoSerialNo&& typeof showAutoSerialNo =="string"?t(showAutoSerialNo):t("TB_SNO")}
               </th>}
+              {showCheckbox&& <th>
+                  <CheckBox
+                  onChange={handleSelectAll}
+                  checked={rows.length > 0 && rows.every((row) => selectedRowIds[row.id])}
+                  // checked={isAllRowsSelected}
+                  // indeterminate={isSomeRowsSelected && !isAllRowsSelected}
+                
+                />
+                
+                </th>}
               {headerGroup.headers.map((column) => (
                 <th {...column.getHeaderProps(column.getSortByToggleProps())} style={{ verticalAlign: "top" }}>
                   {column.render("Header")}
@@ -119,6 +152,11 @@ const Table = ({
               {showAutoSerialNo&&  <td >
               {i+1}
               </td>}
+              {showCheckbox&& <td style={{ padding: "20px 18px"}}>
+                  <CheckBox
+                    {...row.getToggleRowSelectedProps()}
+                  />
+                </td>}
                 {row.cells.map((cell) => {
                   return (
                     <td
@@ -147,11 +185,14 @@ const Table = ({
           })}
         </tbody>
       </table>
+      </div>
       </span>
       </div>
       {isPaginationRequired && (
         <div className="pagination dss-white-pre" >
-          {`${t("CS_COMMON_ROWS_PER_PAGE")} :`}
+		{`${t("CS_COMMON_ROWS_PER_PAGE")} :`}
+		{/*  {`${t("Rows per page")} :`}*/}
+		  
           <select
             className="cp"
             value={pageSize}

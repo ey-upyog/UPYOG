@@ -200,53 +200,138 @@ const Urls = {
   },
   bills: {
     cancelBill: "/billing-service/bill/v2/_cancelbill",
-  },  
-  wms:{
-    SORApplications:{
-      create: "https://64c200dcfa35860baea10c66.mockapi.io/wms/work-management-service/v1/SORApplications",
-      update:"https://64c200dcfa35860baea10c66.mockapi.io/wms/work-management-service/v1/SORApplications/",
-      get:"https://64c200dcfa35860baea10c66.mockapi.io/wms/work-management-service/v1/SORApplications/:id",
-      search:"https://64c200dcfa35860baea10c66.mockapi.io/wms/work-management-service/v1/SORApplications",      
-      count:"https://64c200dcfa35860baea10c66.mockapi.io/wms/work-management-service/v1/SORApplications",
-      delete:"https://64c200dcfa35860baea10c66.mockapi.io/wms/work-management-service/v1/SORApplications:id"
+  },
+wms:{
+  SORApplications:{
+    create: "https://64c200dcfa35860baea10c66.mockapi.io/wms/work-management-service/v1/SORApplications",
+    update:"https://64c200dcfa35860baea10c66.mockapi.io/wms/work-management-service/v1/SORApplications:id",
+    get:"https://64c200dcfa35860baea10c66.mockapi.io/wms/work-management-service/v1/SORApplications/:id",
+    search:"https://64c200dcfa35860baea10c66.mockapi.io/wms/work-management-service/v1/SORApplications",
+    delete:"https://64c200dcfa35860baea10c66.mockapi.io/wms/work-management-service/v1/SORApplications:id"
+  },
+  PRJApplications:{
+    create: "https://64c200dcfa35860baea10c66.mockapi.io/wms/work-management-service/v1/PRJApplications",
+    update:"https://64c200dcfa35860baea10c66.mockapi.io/wms/work-management-service/v1/PRJApplications:id",
+    get:"https://64c200dcfa35860baea10c66.mockapi.io/wms/work-management-service/v1/PRJApplications",
+    search:"https://64c200dcfa35860baea10c66.mockapi.io/wms/work-management-service/v1/PRJApplications",
+    delete:"https://64c200dcfa35860baea10c66.mockapi.io/wms/work-management-service/v1/PRJApplications:id"
+  }, 
+  SCHApplications:{
+    create: "https://64c200dcfa35860baea10c66.mockapi.io/wms/work-management-service/v1/SCHApplications",
+    update:"https://64c200dcfa35860baea10c66.mockapi.io/wms/work-management-service/v1/SCHApplications:id",
+    get:"https://64c200dcfa35860baea10c66.mockapi.io/wms/work-management-service/v1/SCHApplications",
+    search:"https://64c200dcfa35860baea10c66.mockapi.io/wms/work-management-service/v1/SCHApplications",
+    delete:"https://64c200dcfa35860baea10c66.mockapi.io/wms/work-management-service/v1/SCHApplications:id"
+  },
+  PHMApplications:{
+    create: "https://64f5834d2b07270f705d4f91.mockapi.io/PHMApplications",
+    update:"https://64f5834d2b07270f705d4f91.mockapi.io/PHMApplications",
+    get:"https://64f5834d2b07270f705d4f91.mockapi.io/PHMApplications/:id",
+    search:"https://64f5834d2b07270f705d4f91.mockapi.io/PHMApplications",      
+    count:"https://64f5834d2b07270f705d4f91.mockapi.io/PHMApplications",
+  },
+  MBApplications:{
+    create:"https://658bef9a859b3491d3f51ac4.mockapi.io/MBApplications",
+    update:"https://658bef9a859b3491d3f51ac4.mockapi.io/MBApplications",
+    get:"https://658bef9a859b3491d3f51ac4.mockapi.io/MBApplications",
+    search:"https://658bef9a859b3491d3f51ac4.mockapi.io/MBApplications",      
+    count:"https://658bef9a859b3491d3f51ac4.mockapi.io/MBApplications",
+  },
+
+    PMAApplications: {
+      create: "https://64f5834d2b07270f705d4f91.mockapi.io/PMAApplications",
+      update: "https://64f5834d2b07270f705d4f91.mockapi.io/PMAApplications",
+      get: "https://64f5834d2b07270f705d4f91.mockapi.io/PMAApplications/:id",
+      search: "https://64f5834d2b07270f705d4f91.mockapi.io/PMAApplications",
+      count: "https://64f5834d2b07270f705d4f91.mockapi.io/PMAApplications",
     },
-    SCHApplications:{
-      create: "https://65002a9418c34dee0cd46ad1.mockapi.io/wms/work-management-service/v1/SCHApplications",
-      update:"https://65002a9418c34dee0cd46ad1.mockapi.io/wms/work-management-service/v1/SCHApplications/",
-      get:"https://65002a9418c34dee0cd46ad1.mockapi.io/wms/work-management-service/v1/SCHApplications/:id",
-      search:"https://65002a9418c34dee0cd46ad1.mockapi.io/wms/work-management-service/v1/SCHApplications",      
-      count:"https://65002a9418c34dee0cd46ad1.mockapi.io/wms/work-management-service/v1/SCHApplications",
-      delete:"https://65002a9418c34dee0cd46ad1.mockapi.io/wms/work-management-service/v1/SCHApplications:id"
+
+    DRApplications: {
+      create: "https://64f5834d2b07270f705d4f91.mockapi.io/DRApplications",
+      update: "https://64f5834d2b07270f705d4f91.mockapi.io/DRApplications",
+      get: "https://64f5834d2b07270f705d4f91.mockapi.io/DRApplications/:id",
+      search: "https://64f5834d2b07270f705d4f91.mockapi.io/DRApplications",
+      count: "https://64f5834d2b07270f705d4f91.mockapi.io/DRApplications",
     },
-    
-    ProjectApplications:{
-      create: "https://64c200dcfa35860baea10c66.mockapi.io/wms/work-management-service/v1/PMApplications",
-      update:"https://64c200dcfa35860baea10c66.mockapi.io/wms/work-management-service/v1/PMApplications:id",
-      get:"https://64c200dcfa35860baea10c66.mockapi.io/wms/work-management-service/v1/PMApplications/:id",
-      search:"https://64c200dcfa35860baea10c66.mockapi.io/wms/work-management-service/v1/PMApplications",      
-      count:"https://64c200dcfa35860baea10c66.mockapi.io/wms/work-management-service/v1/PMApplications",
-      delete:"https://64c200dcfa35860baea10c66.mockapi.io/wms/work-management-service/v1/PMApplications:id"
+    PRApplications: {
+      create: "https://658bef9a859b3491d3f51ac4.mockapi.io/PRApplications",
+      update: "https://658bef9a859b3491d3f51ac4.mockapi.io/PRApplications",
+      get: "https://658bef9a859b3491d3f51ac4.mockapi.io/PRApplications/:id",
+      search: "https://658bef9a859b3491d3f51ac4.mockapi.io/PRApplications",
+      count: "https://658bef9a859b3491d3f51ac4.mockapi.io/PRApplications",
     },
-    SORApplications2:{
-      create: "http://192.168.0.102:8484/wms/work-management-service/v1/sor/_create",
-      update:"http://192.168.0.102:8484/wms/work-management-service/v1/sor/_update/:sor_id",
-      get:"http://192.168.0.102:8484/wms/work-management-service/v1/sor/_search",
-      search:"http://192.168.0.102:8484/wms/work-management-service/v1/sor/_search",
-      count:"http://192.168.0.102:8484/wms/work-management-service/v1/sor/_search",
+    WSRApplications: {
+      create: "https://658bef9a859b3491d3f51ac4.mockapi.io/WSRApplications",
+      update: "https://658bef9a859b3491d3f51ac4.mockapi.io/WSRApplications",
+      get: "https://658bef9a859b3491d3f51ac4.mockapi.io/WSRApplications/:id",
+      search: "https://658bef9a859b3491d3f51ac4.mockapi.io/WSRApplications",
+      count: "https://658bef9a859b3491d3f51ac4.mockapi.io/WSRApplications",
     },
-    PMApplications:{
-      create: "http://192.168.0.102-:8484/wms/wms-services/v1/pfmilestone/_create",
-      update:"https://64c200dcfa35860baea10c66.mockapi.io/wms/work-management-service/v1/PMApplications:id",
-      get:"https://64c200dcfa35860baea10c66.mockapi.io/wms/work-management-service/v1/PMApplications/:id",
-      search:"https://64c200dcfa35860baea10c66.mockapi.io/wms/work-management-service/v1/PMApplications",
-      
-      count:"https://64c200dcfa35860baea10c66.mockapi.io/wms/work-management-service/v1/PMApplications",
-      delete:"https://64c200dcfa35860baea10c66.mockapi.io/wms/work-management-service/v1/PMApplications:id"
+    ContractorMaster: {
+      create: "/wms/wms-services/v1/contractor/_create",
+      search: "/wms/wms-services/v1/contractor/_search",
+      update: "/wms/wms-services/v1/contractor/_update",
+      count: "https://62f0e3e5e2bca93cd23f2ada.mockapi.io/birth",
+      get: "/wms/wms-services/v1/contractor/_view",
+      mdms: "http://localhost:5000/vendorType",
+      mdmsBankGet: "/wms/wms-services/v1/bank/_view",
+      mdmsBankUpdate: "/wms/wms-services/v1/bank/_update",
+      mdmsBankCreate: "/wms/wms-services/v1/bank/_create",
+      // mdmsSubType:"/wms/wms-services/v1/bank/",
+      mdmsSubTypeGet: "/wms/wms-services/v1/cstype/_view",
+      mdmsSubTypeUpdate: "/wms/wms-services/v1/cstype/_update",
+      mdmsSubTypeCreate: "/wms/wms-services/v1/cstype/_create",
+      mdmsTypeGet: "/wms/wms-services/v1/vendor/_view",
+      mdmsTypeUpdate: "/wms/wms-services/v1/vendor/_update",
+      mdmsTypeCreate: "/wms/wms-services/v1/vendor/_create",
+
+      mdmsVenderClassGet: "/wms/wms-services/v1/vendorc/_view",
+      mdmsVenderClassUpdate: "/wms/wms-services/v1/vendorc/_update",
+      mdmsVenderClassCreate: "/wms/wms-services/v1/vendorc/_create",
+
+      mdmsAccountHeadGet: "/wms/wms-services/v1/paccounth/_view",
+      mdmsAccountHeadUpdate: "/wms/wms-services/v1/paccounth/_update",
+      mdmsAccountHeadCreate: "/wms/wms-services/v1/paccounth/_create",
+
+      mdmsFunctionAppGet: "/wms/wms-services/v1/func/_view",
+      mdmsFunctionAppUpdate: "/wms/wms-services/v1/func/_update",
+      mdmsFunctionAppCreate: "/wms/wms-services/v1/func/_create",
     },
-  },  
+    Tender_Entry: {
+      create: "/wms/wms-services/v1/tenderentry/_create",
+      search: "/wms/wms-services/v1/tenderentry/_search",
+      update: "/wms/wms-services/v1/tenderentry/_update",
+      get: "/wms/wms-services/v1/tenderentry/_view",
+
+      mdmsdepartmentGet: "/wms/wms-services/v1/dept/_view",
+      mdmsdepartmentUpdate: "/wms/wms-services/v1/dept/_update",
+      mdmsdepartmentCreate: "/wms/wms-services/v1/dept/_create",
+
+      mdmsTCategoryGet: "/wms/wms-services/v1/tcategory/_view",
+      mdmsTCategoryUpdate: "/wms/wms-services/v1/tcategory/_update",
+      mdmsTCategoryCreate: "/wms/wms-services/v1/tcategory/_create",
+
+      ProjectName: "/wms/wms-services/v1/project/_view",
+    },
+    Contractor_Agreement: {
+      create: "/wms/wms-services/v1/contractagreement/_create",
+
+      search: "/wms/wms-services/v1/contractagreement/_search",
+      update: "/wms/wms-services/v1/contractagreement/_update",
+      get: "/wms/wms-services/v1/contractagreement/_view",
+      createFake: "http://localhost:5000/CASteper",
+      // createFake: "http://localhost:5000/WMSTenderEntryApplication",
+      // getFake:"http://localhost:5000/CASteper",
+      // createFake:"/CASteper",
+      // getFake:"/CASteper",
+    },
+
+    Running_Account_Final_Bill: {
+      getPreviousBill: "http://localhost:5000/previousBill"
+    }
+  },
   access_control: "/access/v1/actions/mdms/_get",
   billgenie: "/egov-searcher",
   audit: "/inbox/v1/elastic/_search",
 };
-
 export default Urls;

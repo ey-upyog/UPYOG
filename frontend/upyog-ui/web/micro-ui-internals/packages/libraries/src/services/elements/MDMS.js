@@ -685,6 +685,38 @@ const getChapterList = (tenantId, moduleCode, type) => ({
     ],
   },
 });
+const getUnitList = (tenantId, moduleCode, type) => ({
+  type,
+  details: {
+    tenantId,
+    moduleDetails: [
+      {
+        moduleName: moduleCode,
+        masterDetails: [
+          {
+            name: "Unit",
+          },
+        ],
+      },
+    ],
+  },
+});
+const getProjectList = (tenantId, moduleCode, type) => ({
+  type,
+  details: {
+    tenantId,
+    moduleDetails: [
+      {
+        moduleName: moduleCode,
+        masterDetails: [
+          {
+            name: "Project",
+          },
+        ],
+      },
+    ],
+  },
+});
 const getMeterStatusTypeList = (tenantId) => ({
     moduleDetails: [
       {
@@ -755,6 +787,7 @@ const getTradeUnitsDataList = (tenantId, moduleCode, type, filter) => ({
     ],
   },
 });
+
 
 const getMCollectApplicationStatusCriteria = (tenantId, moduleCode, type) => ({
   type,
@@ -1300,6 +1333,23 @@ const WMSChapter = (MdmsRes) => {
   };
 });
 };
+const WMSUnit = (MdmsRes) => {
+  MdmsRes["common-masters"].Unit.filter((Unit) => Unit.active).map((comUnit) => {
+  return {
+    ...comUnit,
+    i18nKey: `COMMON_UNIT_${com.Unit.code}`,
+  };
+});
+};
+const WMSProject = (MdmsRes) => {
+  MdmsRes["common-masters"].Project.filter((Project) => Project.active).map((comProject) => {
+    console.log(comProject);
+  return {
+    ...comProject,
+    i18nKey: `COMMON_PROJECT_${comProject.code}`,
+  };
+});
+};
 const GetMCollectBusinessService = (MdmsRes) =>
   MdmsRes["BillingService"].BusinessService.map((businesServiceDetails) => {
     return {
@@ -1460,7 +1510,11 @@ const transformResponse = (type, MdmsRes, moduleCode, tenantId) => {
     case "WMSDepartment":
       return WMSDepartment(MdmsRes);
     case "WMSChapter":
-      return WMSChapter(MdmsRes);
+      return WMSChapter(MdmsRes);      
+      case "WMSUnit":
+        return WMSUnit(MdmsRes);
+    case "WMSProject":
+      return WMSProject(MdmsRes);
     case "WMSFund":
       return WMSFund(MdmsRes);
     case "DocumentTypes":
@@ -1557,6 +1611,7 @@ export const MdmsService = {
       params: { tenantId: stateCode },
     }),
   call: (tenantId, details) => {
+    console.log("call tenantId ",{tenantId, details})
     return new Promise((resolve, reject) =>
       debouncedCall(
         {
@@ -1574,10 +1629,13 @@ export const MdmsService = {
   getDataByCriteria: async (tenantId, mdmsDetails, moduleCode) => {
     const key = `MDMS.${tenantId}.${moduleCode}.${mdmsDetails.type}.${JSON.stringify(mdmsDetails.details)}`;
     const inStoreValue = PersistantStorage.get(key);
+    console.log("PersistantStorage inStoreValue ",{PersistantStorage,inStoreValue})
+
     if (inStoreValue) {
       return inStoreValue;
     }
-    //const { MdmsRes } = await MdmsService.call(tenantId, mdmsDetails.details);
+    // const { MdmsRes } = await MdmsService.call(tenantId, mdmsDetails.details);
+    console.log("return data MdmsRes ",MdmsRes)
     var MdmsRes  =  
     {
       "ACCESSCONTROL-ACTIONS-TEST": {
@@ -2285,8 +2343,8 @@ export const MdmsService = {
                   "sidebarURL": "/digit-ui/citizen/wms-home"
               },
               {
-                  "id": 2477,
-                  "name": "PRJMST_HOME",
+                  "id": 3002,
+                  "name": "PRJ_HOME",
                   "url": "digit-ui-card",
                   "displayName": "Project Master Home",
                   "orderNumber": 2,
@@ -2299,65 +2357,214 @@ export const MdmsService = {
                   "createdBy": null,
                   "lastModifiedDate": null,
                   "lastModifiedBy": null,
-                  "path": "/digit-ui/citizen/wms/prjmst-home",
-                  "navigationURL": "/digit-ui/citizen/wms/prjmst-home",
+                  "path": "/digit-ui/citizen/wms/prj-home",
+                  "navigationURL": "/digit-ui/citizen/wms/prj-home",
                   "leftIcon": "WMSIcon",
                   "rightIcon": ""
-              },{
-                "id": 2478,
-                "name": "PM HOME",
+              },
+              {
+                "id": 3003,
+                "name": "SCH_HOME",
                 "url": "digit-ui-card",
-                "displayName": "Physical Milestone",
+                "displayName": "Scheme Master Home",
                 "orderNumber": 3,
+                "queryParams": "",
                 "parentModule": "WMS",
                 "enabled": true,
                 "serviceCode": "CITIZEN_SERVICE_WMS",
-                "code": "",
-                "path": "",
-                "navigationURL": "/digit-ui/citizen/pm-home",
+                "tenantId": "pg",
+                "createdDate": null,
+                "createdBy": null,
+                "lastModifiedDate": null,
+                "lastModifiedBy": null,
+                "path": "/digit-ui/citizen/wms/sch-home",
+                "navigationURL": "/digit-ui/citizen/wms/sch-home",
                 "leftIcon": "WMSIcon",
-                "rightIcon": "",
-                "queryParams": "",
-                "sidebar": "digit-ui-links",
-                "sidebarURL": "/digit-ui/citizen/wms-home"
+                "rightIcon": ""
             },
             {
-              "id": 2479,
-              "name": "Contaractor Master",
+              "id": 3004,
+              "name": "Physical Milestone Home ",
               "url": "digit-ui-card",
-              "displayName": "Contaractor Master",
-              "orderNumber": 6,
+              "displayName": "Physical Milestone",
+              "orderNumber": 4,
               "parentModule": "WMS",
               "enabled": true,
               "serviceCode": "CITIZEN_SERVICE_WMS",
               "code": "",
               "path": "",
-              "navigationURL": "/digit-ui/citizen/wms/cm-home",
+              "navigationURL": "/digit-ui/citizen/wms/phm-home",
               "leftIcon": "WMSIcon",
               "rightIcon": "",
               "queryParams": "",
               "sidebar": "digit-ui-links",
               "sidebarURL": "/digit-ui/citizen/wms-home"
           },
-            {
-              "id": 2480,
-              "name": "Contaractor Master Table",
-              "url": "digit-ui-card",
-              "displayName": "Contaractor Master Table",
-              "orderNumber": 7,
-              "parentModule": "WMS",
-              "enabled": true,
-              "serviceCode": "CITIZEN_SERVICE_WMS",
-              "code": "",
-              "path": "",
-              "navigationURL": "/digit-ui/citizen/wms/cm-table-view",
-              "leftIcon": "WMSIcon",
-              "rightIcon": "",
-              "queryParams": "",
-              "sidebar": "digit-ui-links",
-              "sidebarURL": "/digit-ui/citizen/wms-home"
-          }, 
-          ]
+          {
+            "id": 3005,
+            "name": "Measurement Book Home",
+            "url": "digit-ui-card",
+            "displayName": "Measurement Book",
+            "orderNumber": 5,
+            "parentModule": "WMS",
+            "enabled": true,
+            "serviceCode": "CITIZEN_SERVICE_WMS",
+            "code": "",
+            "path": "",
+            "navigationURL": "/digit-ui/citizen/wms/mb-home",
+            "leftIcon": "WMSIcon",
+            "rightIcon": "",
+            "queryParams": "",
+            "sidebar": "digit-ui-links",
+            "sidebarURL": "/digit-ui/citizen/wms-home"
+        },
+          {
+            "id": 3006,
+            "name": "Contaractor Master",
+            "url": "digit-ui-card",
+            "displayName": "Contaractor Master",
+            "orderNumber": 6,
+            "parentModule": "WMS",
+            "enabled": true,
+            "serviceCode": "CITIZEN_SERVICE_WMS",
+            "code": "",
+            "path": "",
+            "navigationURL": "/digit-ui/citizen/wms/cm-home",
+            "leftIcon": "WMSIcon",
+            "rightIcon": "",
+            "queryParams": "",
+            "sidebar": "digit-ui-links",
+            "sidebarURL": "/digit-ui/citizen/wms-home"
+        },
+        {
+          "id": 3007,
+          "name": "Tender Entry",
+          "url": "digit-ui-card",
+          "displayName": "Tender Entry",
+          "orderNumber": 7,
+          "parentModule": "WMS",
+          "enabled": true,
+          "serviceCode": "CITIZEN_SERVICE_WMS",
+          "code": "",
+          "path": "",
+          "navigationURL": "/digit-ui/citizen/wms/tender-entry/home",
+          "leftIcon": "WMSIcon",
+          "rightIcon": "",
+          "queryParams": "",
+          "sidebar": "digit-ui-links",
+          "sidebarURL": "/digit-ui/citizen/wms-home"
+      },
+      
+    {
+      "id": 3008,
+      "name": "Contract Agreement",
+      "url": "digit-ui-card",
+      "displayName": "Contract Agreement",
+      "orderNumber": 8,
+      "parentModule": "WMS",
+      "enabled": true,
+      "serviceCode": "CITIZEN_SERVICE_WMS",
+      "code": "",
+      "path": "",
+      "navigationURL": "/digit-ui/citizen/wms/contract-agreement/list",
+      "leftIcon": "WMSIcon",
+      "rightIcon": "",
+      "queryParams": "",
+      "sidebar": "digit-ui-links",
+      "sidebarURL": "/digit-ui/citizen/wms/contract-agreement/list"
+  },
+ 
+{
+  "id": 3009,
+  "name": "Running Account / Final Bill",
+  "url": "digit-ui-card",
+  "displayName": "Running Account / Final Bill",
+  "orderNumber": 9,
+  "parentModule": "WMS",
+  "enabled": true,
+  "serviceCode": "CITIZEN_SERVICE_WMS",
+  "code": "",
+  "path": "",
+  "navigationURL": "/digit-ui/citizen/wms/running-account/list",
+  "leftIcon": "WMSIcon",
+  "rightIcon": "",
+  "queryParams": "",
+  "sidebar": "digit-ui-links",
+  "sidebarURL": "/digit-ui/citizen/wms/running-account/list"
+},
+{
+  "id": 3010,
+  "name": "Master Data",
+  "url": "digit-ui-card",
+  "displayName": "Master Data",
+  "orderNumber": 10,
+  "parentModule": "WMS",
+  "enabled": true,
+  "serviceCode": "CITIZEN_SERVICE_WMS",
+  "code": "",
+  "path": "",
+  "navigationURL": "/digit-ui/citizen/wms/master-data",
+  "leftIcon": "WMSIcon",
+  "rightIcon": "",
+  "queryParams": "",
+  "sidebar": "digit-ui-links",
+  "sidebarURL": "/digit-ui/citizen/wms/master-data"
+},
+{
+  "id": 3011,
+  "name": "Deduction Register ",
+  "url": "digit-ui-card",
+  "displayName": "Deduction Register",
+  "orderNumber": 4,
+  "parentModule": "WMS",
+  "enabled": true,
+  "serviceCode": "CITIZEN_SERVICE_WMS",
+  "code": "",
+  "path": "",
+  "navigationURL": "/digit-ui/citizen/wms/dr-home",
+  "leftIcon": "WMSIcon",
+  "rightIcon": "",
+  "queryParams": "",
+  "sidebar": "digit-ui-links",
+  "sidebarURL": "/digit-ui/citizen/dr-home"
+},
+{
+  "id": 3012,
+  "name": "Project Register ",
+  "url": "digit-ui-card",
+  "displayName": "Project Register",
+  "orderNumber": 4,
+  "parentModule": "WMS",
+  "enabled": true,
+  "serviceCode": "CITIZEN_SERVICE_WMS",
+  "code": "",
+  "path": "",
+  "navigationURL": "/digit-ui/citizen/wms/pr-home",
+  "leftIcon": "WMSIcon",
+  "rightIcon": "",
+  "queryParams": "",
+  "sidebar": "digit-ui-links",
+  "sidebarURL": "/digit-ui/citizen/pr-home"
+},
+{
+  "id": 3033,
+  "name": "Work Status Report",
+  "url": "digit-ui-card",
+  "displayName": "Work Status Report",
+  "orderNumber": 4,
+  "parentModule": "WMS",
+  "enabled": true,
+  "serviceCode": "CITIZEN_SERVICE_WMS",
+  "code": "",
+  "path": "",
+  "navigationURL": "/digit-ui/citizen/wms/wsr-home",
+  "leftIcon": "WMSIcon",
+  "rightIcon": "",
+  "queryParams": "",
+  "sidebar": "digit-ui-links",
+  "sidebarURL": "/digit-ui/citizen/wsr-home"
+},
+  ]
         },
       "common-masters": {
           "Designation": [
@@ -2645,6 +2852,58 @@ export const MdmsService = {
         "code": "CHAPTER_5",
         "active": true
     },
+  ],
+  "Project": [
+    {
+        "name": "Project One",
+        "code": "PROJECT_1",
+        "active": true
+    },
+    {
+      "name": "Project Two",
+      "code": "PROJECT_2",
+      "active": true
+  },
+  {
+    "name": "Project Three",
+    "code": "PROJECT_3",
+    "active": true
+},{
+  "name": "Project Four",
+  "code": "PROJECT_4",
+  "active": true
+},
+{
+"name": "Project Five",
+"code": "PROJECT_5",
+"active": true
+    },
+          ],
+          "Unit": [
+            {
+                "name": "Unit One",
+                "code": "UNIT_1",
+                "active": true
+            },
+            {
+              "name": "Unit Two",
+              "code": "UNIT_2",
+              "active": true
+          },
+          {
+            "name": "Unit Three",
+            "code": "UNIT_3",
+            "active": true
+        },{
+          "name": "Unit Four",
+          "code": "UNIT_4",
+          "active": true
+      },
+      {
+        "name": "Unit Five",
+        "code": "UNIT_5",
+        "active": true
+},
           ],
           "StateInfo": [
               {
@@ -3820,10 +4079,11 @@ export const MdmsService = {
           },
       "DIGIT-UI": {}
     };
-    //const { MdmsRes } = await MdmsService.call(tenantId, mdmsDetails.details);
+    // const { MdmsRes } = await MdmsService.call(tenantId, mdmsDetails.details);
     const responseValue = transformResponse(mdmsDetails.type, MdmsRes, moduleCode.toUpperCase(), tenantId);
     const cacheSetting = getCacheSetting(mdmsDetails.details.moduleDetails[0].moduleName);
     PersistantStorage.set(key, responseValue, cacheSetting.cacheTimeInSecs);
+    console.log("return data responseValue ",responseValue);
     return responseValue;
   },
   getServiceDefs: (tenantId, moduleCode) => {
@@ -3896,7 +4156,7 @@ export const MdmsService = {
     return MdmsService.getDataByCriteria(tenantId, getDocumentRequiredScreenCategory(tenantId, moduleCode), moduleCode);
   },
   getTLDocumentRequiredScreen: (tenantId, moduleCode) => {
-    return MdmsService.getDataByCriteria(tenantId, getDocumentRequiredScreenCategory(tenantId, moduleCode), moduleCode);
+      return MdmsService.getDataByCriteria(tenantId, getDocumentRequiredScreenCategory(tenantId, moduleCode), moduleCode);
   },
   getTradeUnitsData: (tenantId, moduleCode, type, filter) => {
     return MdmsService.getDataByCriteria(tenantId, getTradeUnitsDataList(tenantId, moduleCode, type, filter), moduleCode);
@@ -3997,6 +4257,12 @@ export const MdmsService = {
   },
   WMSChapter: (tenantId, moduleCode, type) => {
     return MdmsService.getDataByCriteria(tenantId,getChapterList(tenantId, moduleCode, type) , moduleCode);
+  },
+  WMSUnit: (tenantId, moduleCode, type) => {
+    return MdmsService.getDataByCriteria(tenantId,getUnitList(tenantId, moduleCode, type) , moduleCode);
+  },
+  WMSProject: (tenantId, moduleCode, type) => {
+    return MdmsService.getDataByCriteria(tenantId,getProjectList(tenantId, moduleCode, type) , moduleCode);
   },
   getDocumentTypes: (tenantId, moduleCode, type) => {
     return MdmsService.getDataByCriteria(tenantId, getDocumentTypesCriteria(tenantId, moduleCode, type), moduleCode);
