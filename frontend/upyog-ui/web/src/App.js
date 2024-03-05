@@ -18,7 +18,7 @@ import {
   paymentConfigs,
 } from "@egovernments/digit-ui-module-common";
 import { DigitUI } from "@egovernments/digit-ui-module-core";
-import { initLibraries } from "@egovernments/digit-ui-libraries";
+/*import { initLibraries } from "@egovernments/digit-ui-libraries";*/
 //import {  HRMSModule,  initHRMSComponents,} from "@egovernments/digit-ui-module-hrms";
 /*import {
   TLModule,
@@ -35,7 +35,7 @@ import { initCommonPTComponents } from "@egovernments/digit-ui-module-commonpt";
 /*import { initBillsComponents } from "@egovernments/digit-ui-module-bills";*/
 // import { initReportsComponents } from "@egovernments/digit-ui-module-reports";
 
-initLibraries();
+//initLibraries();
 
 const enabledModules = [
   "PGR",
