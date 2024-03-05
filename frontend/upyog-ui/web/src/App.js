@@ -19,10 +19,7 @@ import {
 } from "@egovernments/digit-ui-module-common";
 import { DigitUI } from "@egovernments/digit-ui-module-core";
 import { initLibraries } from "@egovernments/digit-ui-libraries";
-import {
-  HRMSModule,
-  initHRMSComponents,
-} from "@egovernments/digit-ui-module-hrms";
+//import {  HRMSModule,  initHRMSComponents,} from "@egovernments/digit-ui-module-hrms";
 import {
   TLModule,
   TLLinks,
@@ -49,7 +46,7 @@ const enabledModules = [
   "DSS",
   "NDSS",
   "MCollect",
-  "HRMS",
+  //"HRMS",
   "TL",
   "Receipts",
   "OBPS",
@@ -74,7 +71,7 @@ window.Digit.ComponentRegistryService.setupRegistry({
   ...PTComponents,
   MCollectLinks,
   MCollectModule,
-  HRMSModule,
+  //HRMSModule,
   TLModule,
   TLLinks,
   ReceiptsModule
@@ -84,7 +81,7 @@ initPGRComponents();
 initFSMComponents();
 initDSSComponents();
 initMCollectComponents();
-initHRMSComponents();
+//initHRMSComponents();
 initTLComponents();
 initReceiptsComponents();
 initOBPSComponents();
