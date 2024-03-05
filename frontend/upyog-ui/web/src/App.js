@@ -27,7 +27,7 @@ import { initLibraries } from "@egovernments/digit-ui-libraries";
 } from "@egovernments/digit-ui-module-tl";*/
 import { initReceiptsComponents, ReceiptsModule } from "@egovernments/digit-ui-module-receipts";
 import { initOBPSComponents } from "@egovernments/digit-ui-module-obps";
-import { initNOCComponents } from "@egovernments/digit-ui-module-noc";
+//import { initNOCComponents } from "@egovernments/digit-ui-module-noc";
 import { initEngagementComponents } from "@egovernments/digit-ui-module-engagement";
 import { initWSComponents } from "@egovernments/digit-ui-module-ws";
 import { initCustomisationComponents } from "./Customisations";
@@ -85,7 +85,7 @@ initMCollectComponents();
 //initTLComponents();
 initReceiptsComponents();
 initOBPSComponents();
-initNOCComponents();
+//initNOCComponents();
 initEngagementComponents();
 initWSComponents();
 initCommonPTComponents();
