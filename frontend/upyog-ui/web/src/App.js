@@ -20,11 +20,11 @@ import {
 import { DigitUI } from "@egovernments/digit-ui-module-core";
 import { initLibraries } from "@egovernments/digit-ui-libraries";
 //import {  HRMSModule,  initHRMSComponents,} from "@egovernments/digit-ui-module-hrms";
-import {
+/*import {
   TLModule,
   TLLinks,
   initTLComponents,
-} from "@egovernments/digit-ui-module-tl";
+} from "@egovernments/digit-ui-module-tl";*/
 import { initReceiptsComponents, ReceiptsModule } from "@egovernments/digit-ui-module-receipts";
 import { initOBPSComponents } from "@egovernments/digit-ui-module-obps";
 import { initNOCComponents } from "@egovernments/digit-ui-module-noc";
@@ -72,8 +72,8 @@ window.Digit.ComponentRegistryService.setupRegistry({
   MCollectLinks,
   MCollectModule,
   //HRMSModule,
-  TLModule,
-  TLLinks,
+ // TLModule,
+  //TLLinks,
   ReceiptsModule
 });
 
@@ -82,7 +82,7 @@ initFSMComponents();
 initDSSComponents();
 initMCollectComponents();
 //initHRMSComponents();
-initTLComponents();
+//initTLComponents();
 initReceiptsComponents();
 initOBPSComponents();
 initNOCComponents();
