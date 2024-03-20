@@ -15,7 +15,7 @@
     "babel-runtime": "6.26.0",
     "datatables": "1.10.18",
     "datatables-buttons": "1.0.3",
-    "datatables.net": "1.11.5",
+    "datatables.net": "2.0.2",
     "datatables.net-buttons-bs": "2.0.0",
     "datatables.net-responsive": "2.2.9",
     "datatables.net-buttons": "2.2.2",
@@ -75,7 +75,7 @@
     "webfontloader": "1.6.28"
   },
   "resolutions": {
-    "**/datatables.net": "1.11.5"
+    "**/datatables.net": "2.0.2"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
